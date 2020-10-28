@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t bjmorman/react-test -f ./client/Dockerfile.dev
+  - docker build -t bjmorman/react-test -f ./client/Dockerfile.dev .
 
 script:
-    - docker run -e CI=true bjmorman/react-test npm test
+  - docker run -e CI=true bjmorman/react-test npm test
 
 after_success:
   - docker build -t bjmorman/multi-client ./client
